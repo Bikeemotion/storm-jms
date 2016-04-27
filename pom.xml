@@ -71,14 +71,14 @@
 
 	<distributionManagement>
 		<repository>
-			<id>artifactory-releases</id>
-			<name>artifactory.ath.skycdc.com-releases</name>
-			<url>http://artifactory.ath.skycdc.com/artifactory/search-repo</url>
+			<id>private_nexus</id>
+			<name>Internal Releases</name>
+			<url>http://${nexus.ip}:${nexus.port}/content/repositories/${nexus.repository}/</url>
 		</repository>
 		<snapshotRepository>
-			<id>artifactory-snapshots</id>
-			<name>artifactory.ath.skycdc.com-snapshots</name>
-			<url>http://artifactory.ath.skycdc.com/artifactory/search-repo</url>
+			<id>private_nexus</id>
+			<name>Internal Releases</name>
+			<url>http://${nexus.ip}:${nexus.port}/content/repositories/${nexus.repository}/</url>
 		</snapshotRepository>
 	</distributionManagement>
 
