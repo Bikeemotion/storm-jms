@@ -1,4 +1,13 @@
 *.ipr
 *.iws
 *.iml
-target/
+target
+build
+test-output
+gen
+*.iml
+.idea
+.settings
+.classpath
+.project
+*~
