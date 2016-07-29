@@ -203,7 +203,7 @@ public class JmsSpout extends BaseRichSpout implements MessageListener {
 	public void nextTuple() {
 		Message msg = this.queue.poll();
 		if (msg == null) {
-			Utils.sleep(50);
+			Utils.sleep(100);
 		} else {
 
 			LOG.debug("sending tuple: " + msg);
