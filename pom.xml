@@ -27,7 +27,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.github.ptgoetz</groupId>
   <artifactId>storm-jms</artifactId>
-  <version>1.0.1</version>
+  <version>1.0.1-C1</version>
   <name>Storm JMS</name>
   <description>Storm JMS Components</description>
 
@@ -74,19 +74,6 @@
   <properties>
     <storm.version>1.0.0</storm.version>
   </properties>
-
-  <distributionManagement>
-    <repository>
-      <id>private_nexus</id>
-      <name>Internal Releases</name>
-      <url>http://${nexus.ip}:${nexus.port}/content/repositories/${nexus.repository}/</url>
-    </repository>
-    <snapshotRepository>
-      <id>private_nexus</id>
-      <name>Internal Releases</name>
-      <url>http://${nexus.ip}:${nexus.port}/content/repositories/${nexus.repository}/</url>
-    </snapshotRepository>
-  </distributionManagement>
 
   <dependencies>
     <dependency>
@@ -175,4 +162,18 @@
       </plugin>
     </plugins>
   </build>
+
+  <distributionManagement>
+    <repository>
+      <id>private_nexus</id>
+      <name>Internal Releases</name>
+      <url>http://${nexus.ip}:${nexus.port}/content/repositories/${nexus.repository}/</url>
+    </repository>
+    <snapshotRepository>
+      <id>private_nexus</id>
+      <name>Internal Releases</name>
+      <url>http://${nexus.ip}:${nexus.port}/content/repositories/${nexus.repository}/</url>
+    </snapshotRepository>
+  </distributionManagement>
+
 </project>
