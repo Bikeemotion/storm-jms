@@ -1,3 +1,12 @@
+## About this fork
+
+This JMS Spout is used internally by the company to ingest JMS events into storm
+
+### Changes on this fork
+
+* Add reconnection mechanics - spout should try to (re)connect when *anything* happens with its JMS connection (eg. connection stops, connect fails, etc). Reconnection is handled by the consumer itself and not relying in failover auto reconnection (which might event not work at all with a dynamic network of brokers);
+* Increased spout queue pool sleeping period
+
 ## About Storm JMS
 Storm JMS is a generic framework for integrating JMS messaging within the Storm framework.
 

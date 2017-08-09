@@ -27,7 +27,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.github.ptgoetz</groupId>
   <artifactId>storm-jms</artifactId>
-  <version>1.0.1-C1</version>
+  <version>1.0.1-C2</version>
   <name>Storm JMS</name>
   <description>Storm JMS Components</description>
 

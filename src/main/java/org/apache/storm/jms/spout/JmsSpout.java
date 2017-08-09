@@ -232,37 +232,50 @@ public class JmsSpout extends BaseRichSpout implements MessageListener {
       }
 
       LOG.warn("Trying to reconnect JMS connection");
-      close();
-      initializeConsumer();
-      // when init goes ok, backoff needs to reset
-      reconnectDelay = initialReconnectDelay;
-      LOG.info("JMS connection reestablished");
+
+      try {
+        closeConnection();
+      } finally {
+        initializeConsumer();
+        // when init goes ok, backoff needs to reset
+        reconnectDelay = initialReconnectDelay;
+        LOG.info("JMS connection reestablished");
+      }
+
+    } catch (JMSException e){
+
+      // In this case it shouldn't recover since it is a JMSException and the recover will work
+      // connection.setExceptionListener ...
+      LOG.warn("Reconnect attempt failed! Will continue to try not explicitly...", e);
     } catch (Exception e) {
 
-      LOG.warn("Reconnect attempt failed! Will continue to try...", e);
+      LOG.warn("Reconnect attempt failed! Will continue to try recovering consumer...", e);
       recoverConsumer();
     }
   }
 
-  public void close() {
+  private void closeConnection() throws JMSException{
+    LOG.debug("Closing JMS consumer.");
+
+    if (this.consumer != null) {
+
+      this.consumer.close();
+    }
+    if (this.session != null) {
+
+      this.session.close();
+    }
+    if (this.connection != null) {
+
+      this.connection.close();
+    }
+  }
+
+  public void close()  {
 
     try {
 
-      LOG.debug("Closing JMS consumer.");
-
-      if (this.consumer != null) {
-
-        this.consumer.close();
-      }
-      if (this.session != null) {
-
-        this.session.close();
-      }
-      if (this.connection != null) {
-
-        this.connection.close();
-      }
-
+      closeConnection();
     } catch (JMSException e) {
 
       LOG.warn("Error closing JMS consumer.", e);
